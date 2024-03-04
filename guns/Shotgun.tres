@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GunResource" load_steps=3 format=3 uid="uid://c18ccafp4xn4f"]
+
+[ext_resource type="Script" path="res://guns/GunResource.gd" id="1_l4yhm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx0w1"]
+size = Vector2(30, 50)
+
+[resource]
+script = ExtResource("1_l4yhm")
+damage = 1
+knockback = 300
+hit_shape = SubResource("RectangleShape2D_lx0w1")
+offset = Vector2(20, 0)
+lifetime = 0.1

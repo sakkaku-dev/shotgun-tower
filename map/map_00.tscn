@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c42xtx57bayxb"]
+
+[ext_resource type="TileSet" uid="uid://buclsmiivqlb7" path="res://map/tileset.tres" id="1_aqnqw"]
+[ext_resource type="PackedScene" uid="uid://buhm8bqdpnpw6" path="res://enemy.tscn" id="2_fdmy5"]
+
+[node name="Map00" type="TileMap"]
+tile_set = ExtResource("1_aqnqw")
+format = 2
+layer_0/tile_data = PackedInt32Array(-393225, 524289, 0, -327689, 524289, 1, -262153, 524289, 1, -196617, 524289, 1, -131081, 524289, 1, -65545, 524289, 1, -65544, 589825, 2, -65543, 720897, 2, -131079, 720897, 2, -196615, 720897, 2, -262151, 720897, 2, -327687, 720897, 2, -393224, 655361, 0, -393223, 393217, 0, -262152, 589825, 2, -196616, 589825, 2, -131080, 589825, 2, -327688, 589825, 2, -131067, 524289, 0, -131066, 655361, 0, -131065, 655361, 0, -131064, 720897, 0, -393222, 131073, 3, -393221, 196609, 3, -7, 720897, 3, -8, 589825, 3, -9, 524289, 3, -262145, 65537, 3, -327680, 131073, 3, -327679, 196609, 3, -65528, 720897, 3, -65529, 589825, 3, -65530, 589825, 3, -65531, 524289, 3, -524283, 65537, 3, -524282, 131073, 3, -524281, 131073, 3, -524280, 196609, 3)
+
+[node name="Enemy" parent="." instance=ExtResource("2_fdmy5")]
+position = Vector2(207, -78)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_fdmy5")]
+position = Vector2(-240, -242)

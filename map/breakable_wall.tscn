@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://6ewbk5udk7a7"]
+
+[ext_resource type="Texture2D" uid="uid://dr4lckiwhbwsg" path="res://icon.svg" id="1_abhpd"]
+[ext_resource type="Script" path="res://map/breakable_wall.gd" id="1_ul3sn"]
+[ext_resource type="Script" path="res://Hurtbox.gd" id="2_32uoh"]
+[ext_resource type="PackedScene" uid="uid://b6kj3p7ku7kv8" path="res://map/shard_emitter.tscn" id="2_48hb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg4it"]
+size = Vector2(34, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6x7l"]
+size = Vector2(38, 68)
+
+[node name="BreakableWall" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_ul3sn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.265625, 0.5)
+texture = ExtResource("1_abhpd")
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("2_48hb3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vg4it")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_32uoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_r6x7l")
+
+[connection signal="hit" from="Hurtbox" to="." method="_on_hurtbox_hit"]
