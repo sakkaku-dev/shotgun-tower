@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal died()
+
 @export var dir := Vector2.RIGHT
 @export var speed := 100
 @export var accel := 600

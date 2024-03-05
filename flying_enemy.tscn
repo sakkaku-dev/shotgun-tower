@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://sf2iw255bf47"]
+
+[ext_resource type="Texture2D" uid="uid://dr4lckiwhbwsg" path="res://icon.svg" id="1_8w2qc"]
+[ext_resource type="Script" path="res://flying_enemy.gd" id="1_e3s6e"]
+[ext_resource type="Script" path="res://Hitbox.gd" id="3_dtdxx"]
+[ext_resource type="Script" path="res://Hurtbox.gd" id="4_inrpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebrx1"]
+size = Vector2(32, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_io542"]
+size = Vector2(38, 40)
+
+[node name="FlyingEnemy" type="CharacterBody2D"]
+script = ExtResource("1_e3s6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.517647, 0, 1, 1)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("1_8w2qc")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_dtdxx")
+knockback_force = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_ebrx1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4_inrpx")
+health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_io542")

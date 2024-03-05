@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpptajcetwq04"]
+[gd_scene load_steps=8 format=3 uid="uid://cpptajcetwq04"]
 
 [ext_resource type="Script" path="res://guns/GunHitbox.gd" id="1_nsmji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q52n8"]
+size = Vector2(30, 50)
+
+[sub_resource type="Gradient" id="Gradient_opv5v"]
+offsets = PackedFloat32Array(0.493421, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_quk5j"]
+gradient = SubResource("Gradient_opv5v")
+
+[sub_resource type="Curve" id="Curve_83m3y"]
+min_value = 0.99
+max_value = 2.0
+_data = [Vector2(0, 1.52941), 0.0, 0.645962, 0, 0, Vector2(0.5, 1.4051), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1y778"]
+curve = SubResource("Curve_83m3y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qu7st"]
+particle_flag_disable_z = true
+spread = 70.0
+initial_velocity_min = 60.0
+initial_velocity_max = 80.0
+damping_min = 40.0
+damping_max = 50.0
+scale_curve = SubResource("CurveTexture_1y778")
+color_ramp = SubResource("GradientTexture1D_quk5j")
 
 [node name="Hitbox" type="Area2D"]
 collision_layer = 0
@@ -8,3 +37,16 @@ collision_mask = 16
 script = ExtResource("1_nsmji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_q52n8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.647059, 0.239216, 1)
+position = Vector2(16, 0)
+scale = Vector2(2, 2)
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_qu7st")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0

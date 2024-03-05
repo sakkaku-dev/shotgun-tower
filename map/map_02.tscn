@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmtouhwhdg5nk"]
+
+[ext_resource type="TileSet" uid="uid://buclsmiivqlb7" path="res://map/tileset.tres" id="1_widpn"]
+[ext_resource type="PackedScene" uid="uid://buhm8bqdpnpw6" path="res://enemy.tscn" id="2_y8tdn"]
+[ext_resource type="PackedScene" uid="uid://sf2iw255bf47" path="res://flying_enemy.tscn" id="3_q4x2s"]
+
+[node name="Map02" type="TileMap"]
+position = Vector2(0, -960)
+tile_set = ExtResource("1_widpn")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196605, 1, 3, -131074, 720897, 3, -131075, 589825, 3, -131076, 589825, 3, -131077, 524289, 3, -196613, 524289, 0, -196612, 655361, 0, -196611, 655361, 0, -196610, 720897, 0, -262153, 1, 2, -327689, 1, 0, -524292, 1, 3, -589823, 65537, 3, -589822, 131073, 3, -589821, 196609, 3, -720889, 524289, 3, -786425, 524289, 0, -786424, 720897, 0, -720888, 720897, 3, -983040, 720897, 0, -917504, 720897, 3, -851969, 524289, 3, -917505, 524289, 0, -1245193, 1, 0, -1179657, 1, 1, -1114121, 65537, 2, -1114120, 196609, 3)
+
+[node name="Enemy" parent="." instance=ExtResource("2_y8tdn")]
+position = Vector2(-121, -140)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("3_q4x2s")]
+position = Vector2(-241, -400)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_y8tdn")]
+position = Vector2(-10, -488)

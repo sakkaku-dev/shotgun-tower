@@ -1,22 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://ccqdkuc7b22bs"]
+[gd_scene load_steps=18 format=3 uid="uid://ccqdkuc7b22bs"]
 
 [ext_resource type="TileSet" uid="uid://buclsmiivqlb7" path="res://map/tileset.tres" id="1_ms62v"]
 [ext_resource type="Texture2D" uid="uid://dr4lckiwhbwsg" path="res://icon.svg" id="2_e03qj"]
 [ext_resource type="PackedScene" uid="uid://c42xtx57bayxb" path="res://map/map_00.tscn" id="2_f7ham"]
 [ext_resource type="Script" path="res://Player.gd" id="2_f8xbt"]
+[ext_resource type="Script" path="res://MapCreator.gd" id="2_ksiwt"]
 [ext_resource type="Script" path="res://KoyoriTimer.gd" id="3_0fdt0"]
 [ext_resource type="PackedScene" uid="uid://cpptajcetwq04" path="res://guns/GunHitbox.tscn" id="3_h4yv5"]
-[ext_resource type="PackedScene" uid="uid://buhm8bqdpnpw6" path="res://enemy.tscn" id="4_2g58e"]
 [ext_resource type="Script" path="res://guns/Shotgun.gd" id="4_f2cli"]
+[ext_resource type="PackedScene" uid="uid://bmtouhwhdg5nk" path="res://map/map_02.tscn" id="5_cpxy6"]
 [ext_resource type="Script" path="res://guns/Grapple.gd" id="6_67nph"]
-[ext_resource type="Script" path="res://FireRate.gd" id="6_w36ea"]
 [ext_resource type="Resource" uid="uid://c18ccafp4xn4f" path="res://guns/Shotgun.tres" id="7_4y0qf"]
 [ext_resource type="Script" path="res://JumpBuffer.gd" id="7_rspcd"]
-[ext_resource type="Shader" path="res://circle.gdshader" id="11_2vg22"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="11_38qx1"]
 [ext_resource type="PackedScene" uid="uid://dabcm8u46uapg" path="res://map/map_01.tscn" id="12_4bn0t"]
-[ext_resource type="Script" path="res://CooldownRect.gd" id="12_e4awj"]
-[ext_resource type="Script" path="res://OnLand.gd" id="13_wrv8c"]
+[ext_resource type="Script" path="res://FireCountDisplay.gd" id="15_l0nab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fea0"]
 size = Vector2(26, 26)
@@ -24,35 +22,18 @@ size = Vector2(26, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53k5f"]
 size = Vector2(24, 24)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qnht"]
-shader = ExtResource("11_2vg22")
-shader_parameter/color = Color(0, 0, 0, 0.603922)
-shader_parameter/outer_radius = 0.793
-shader_parameter/inner_radius = 0.0
-shader_parameter/turn = 0.0
-shader_parameter/blur = 0.0
-shader_parameter/fill_ratio = 0.0
-
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_ms62v")
 format = 2
-layer_0/tile_data = PackedInt32Array(-589815, 1, 1, -2883591, 131073, 3, -2883590, 131073, 3, -2883589, 131073, 3, -2883587, 131073, 3, -2883588, 131073, 3, -2883586, 131073, 3, -2883585, 131073, 3, -2949119, 131073, 3, -2949120, 131073, 3, -2949118, 131073, 3, -2949117, 131073, 3, -2949116, 131073, 3, -2949115, 131073, 3, -2949114, 131073, 3, -2949113, 131073, 3, -2949112, 131073, 3, -2949111, 196609, 0, -2883592, 131073, 3, -2883593, 131073, 3, -262154, 1, 1, -327690, 1, 1, -393226, 1, 1, -458762, 1, 1, -524298, 1, 1, -589834, 1, 1, -655370, 1, 1, -720906, 1, 1, -786442, 1, 1, -851978, 1, 1, -917514, 1, 1, -983050, 1, 1, -1048586, 1, 1, -1114122, 1, 1, -1179658, 1, 1, -1245194, 1, 1, -1310730, 1, 1, -1376266, 1, 1, -1441802, 1, 1, -1507338, 1, 1, -1572874, 1, 1, -1638410, 1, 1, -1703946, 1, 1, -1769482, 1, 1, -1835018, 1, 1, -1900554, 1, 1, -1966090, 1, 1, -2031626, 1, 1, -2097162, 1, 1, -2162698, 1, 1, -2228234, 1, 1, -2293770, 1, 1, -2359306, 1, 1, -2424842, 1, 1, -2490378, 1, 1, -2555914, 1, 1, -2621450, 1, 1, -2686986, 1, 1, -2752522, 1, 1, -2818058, 1, 1, -2883594, 65537, 0, -2883575, 1, 1, -2818039, 1, 1, -2752503, 1, 1, -2686967, 1, 1, -2621431, 1, 1, -2555895, 1, 1, -2490359, 1, 1, -2424823, 1, 1, -2359287, 1, 1, -2293751, 1, 1, -2228215, 1, 1, -2162679, 1, 1, -2097143, 1, 1, -2031607, 1, 1, -1966071, 1, 1, -1900535, 1, 1, -1834999, 1, 1, -1769463, 1, 1, -1703927, 1, 1, -1638391, 1, 1, -1572855, 1, 1, -1507319, 1, 1, -1441783, 1, 1, -1376247, 1, 1, -1310711, 1, 1, -1245175, 1, 1, -1179639, 1, 1, -1114103, 1, 1, -1048567, 1, 1, -983031, 1, 1, -917495, 1, 1, -851959, 1, 1, -786423, 1, 1, -720887, 1, 1, -655351, 1, 1, -524279, 1, 1, -458743, 1, 1, -393207, 1, 1, -196618, 1, 1, -131082, 1, 1, -65546, 1, 1, -327671, 1, 1, -262135, 1, 1, -196599, 1, 1, -131063, 1, 1, -65527, 1, 1, 9, 196609, 2, 8, 131073, 3, 7, 131073, 3, 6, 131073, 3, 5, 131073, 3, 4, 131073, 3, 3, 131073, 3, 2, 131073, 3, 1, 131073, 3, 0, 131073, 3, 65535, 131073, 3, 65534, 131073, 3, 65533, 131073, 3, 65532, 131073, 3, 65531, 131073, 3, 65530, 131073, 3, 65529, 131073, 3, 65528, 131073, 3, 65527, 131073, 3, 65526, 65537, 2, -10, 1, 1)
+layer_0/tile_data = PackedInt32Array(-589815, 1, 1, -262154, 1, 1, -327690, 1, 1, -393226, 1, 1, -458762, 1, 1, -524298, 1, 1, -589834, 1, 1, -655370, 1, 1, -720906, 1, 1, -786442, 1, 1, -851978, 1, 1, -917514, 1, 1, -983050, 1, 1, -1048586, 1, 1, -1114122, 1, 1, -1179658, 1, 1, -1245194, 1, 1, -1310730, 1, 1, -1376266, 1, 1, -1441802, 1, 1, -1507338, 1, 1, -1572874, 1, 1, -1638410, 1, 1, -1703946, 1, 1, -1769482, 1, 1, -1835018, 1, 1, -1900554, 1, 1, -1966090, 1, 1, -2031626, 1, 1, -2097162, 1, 1, -2162698, 1, 1, -2228234, 1, 1, -2293770, 1, 1, -2359306, 1, 1, -2424842, 1, 1, -2490378, 1, 1, -2555914, 1, 1, -2621450, 1, 1, -2686986, 1, 0, -2752503, 1, 0, -2686967, 1, 1, -2621431, 1, 1, -2555895, 1, 1, -2490359, 1, 1, -2424823, 1, 1, -2359287, 1, 1, -2293751, 1, 1, -2228215, 1, 1, -2162679, 1, 1, -2097143, 1, 1, -2031607, 1, 1, -1966071, 1, 1, -1900535, 1, 1, -1834999, 1, 1, -1769463, 1, 1, -1703927, 1, 1, -1638391, 1, 1, -1572855, 1, 1, -1507319, 1, 1, -1441783, 1, 1, -1376247, 1, 1, -1310711, 1, 1, -1245175, 1, 1, -1179639, 1, 1, -1114103, 1, 1, -1048567, 1, 1, -983031, 1, 1, -917495, 1, 1, -851959, 1, 1, -786423, 1, 1, -720887, 1, 1, -655351, 1, 1, -524279, 1, 1, -458743, 1, 1, -393207, 1, 1, -196618, 1, 1, -131082, 1, 1, -65546, 1, 1, -327671, 1, 1, -262135, 1, 1, -196599, 1, 1, -131063, 1, 1, -65527, 1, 1, 9, 196609, 2, 8, 131073, 3, 7, 131073, 3, 6, 131073, 3, 5, 131073, 3, 4, 131073, 3, 3, 131073, 3, 2, 131073, 3, 1, 131073, 3, 0, 131073, 3, 65535, 131073, 3, 65534, 131073, 3, 65533, 131073, 3, 65532, 131073, 3, 65531, 131073, 3, 65530, 131073, 3, 65529, 131073, 3, 65528, 131073, 3, 65527, 131073, 3, 65526, 65537, 2, -10, 1, 1)
 
-[node name="Map00" parent="TileMap" instance=ExtResource("2_f7ham")]
+[node name="MapCreator" type="Node2D" parent="TileMap"]
+script = ExtResource("2_ksiwt")
+maps = Array[PackedScene]([ExtResource("2_f7ham"), ExtResource("12_4bn0t"), ExtResource("5_cpxy6")])
 
-[node name="Map01" parent="TileMap" instance=ExtResource("12_4bn0t")]
-position = Vector2(0, -256)
-
-[node name="Map02" type="TileMap" parent="TileMap"]
-position = Vector2(0, -960)
-tile_set = ExtResource("1_ms62v")
-format = 2
-layer_0/tile_data = PackedInt32Array(-196605, 1, 3, -131074, 720897, 3, -131075, 589825, 3, -131076, 589825, 3, -131077, 524289, 3, -196613, 524289, 0, -196612, 655361, 0, -196611, 655361, 0, -196610, 720897, 0, -262153, 1, 2, -327689, 1, 0, -524292, 1, 3, -589823, 65537, 3, -589822, 131073, 3, -589821, 196609, 3, -720889, 524289, 3, -786425, 524289, 0, -786424, 720897, 0, -720888, 720897, 3)
-
-[node name="Enemy" parent="TileMap/Map02" instance=ExtResource("4_2g58e")]
-position = Vector2(-121, -140)
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TileMap/MapCreator"]
 
 [node name="Player" type="CharacterBody2D" parent="TileMap"]
 position = Vector2(0, -51)
@@ -88,21 +69,12 @@ shape = SubResource("RectangleShape2D_3fea0")
 [node name="GrappleCast" type="RayCast2D" parent="TileMap/Player"]
 target_position = Vector2(0, 100)
 
-[node name="OnLand" type="Node" parent="TileMap/Player" node_paths=PackedStringArray("player")]
-script = ExtResource("13_wrv8c")
-player = NodePath("..")
-
 [node name="Guns" type="Node" parent="TileMap/Player"]
 
-[node name="Shotgun" type="Node" parent="TileMap/Player/Guns" node_paths=PackedStringArray("fire_rate")]
+[node name="Shotgun" type="Node" parent="TileMap/Player/Guns" node_paths=PackedStringArray("player")]
 script = ExtResource("4_f2cli")
-fire_rate = NodePath("FireRate")
 resource = ExtResource("7_4y0qf")
-
-[node name="FireRate" type="Timer" parent="TileMap/Player/Guns/Shotgun"]
-wait_time = 10000.0
-one_shot = true
-script = ExtResource("6_w36ea")
+player = NodePath("../..")
 
 [node name="Grapple" type="Node" parent="TileMap/Player/Guns" node_paths=PackedStringArray("cast")]
 script = ExtResource("6_67nph")
@@ -138,22 +110,8 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer"]
-custom_minimum_size = Vector2(20, 20)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" node_paths=PackedStringArray("shotgun")]
 layout_mode = 2
-texture = ExtResource("2_e03qj")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/TextureRect" node_paths=PackedStringArray("timer")]
-material = SubResource("ShaderMaterial_6qnht")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_e4awj")
-timer = NodePath("../../../../TileMap/Player/Guns/Shotgun/FireRate")
-
-[connection signal="landed" from="TileMap/Player/OnLand" to="TileMap/Player/Guns/Shotgun/FireRate" method="stop"]
+script = ExtResource("15_l0nab")
+shotgun = NodePath("../../../TileMap/Player/Guns/Shotgun")
+tex = ExtResource("2_e03qj")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dabcm8u46uapg"]
+[gd_scene load_steps=4 format=3 uid="uid://dabcm8u46uapg"]
 
 [ext_resource type="TileSet" uid="uid://buclsmiivqlb7" path="res://map/tileset.tres" id="1_6fipp"]
 [ext_resource type="PackedScene" uid="uid://buhm8bqdpnpw6" path="res://enemy.tscn" id="2_va6vt"]
+[ext_resource type="PackedScene" uid="uid://sf2iw255bf47" path="res://flying_enemy.tscn" id="3_lgeoi"]
 
 [node name="Map01" type="TileMap"]
 tile_set = ExtResource("1_6fipp")
@@ -13,3 +14,7 @@ position = Vector2(212, -715)
 
 [node name="Enemy3" parent="." instance=ExtResource("2_va6vt")]
 position = Vector2(-195, -175)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("3_lgeoi")]
+position = Vector2(-262, -681)
+distance = 20

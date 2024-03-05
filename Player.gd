@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal shot()
+
 enum Gun {
 	SHOTGUN,
 	GRAPPLE,
@@ -8,7 +10,7 @@ enum Gun {
 
 @export var speed := 200
 @export var accel := 1200
-@export var jump_force := 600
+@export var jump_force := 800
 @export var jump_force_air := 800
 
 @export var swing_move_force := 5
@@ -102,3 +104,5 @@ func fire_shot(gun_res: GunResource):
 	node.global_position = global_position
 	node.global_rotation = Vector2.RIGHT.angle_to(global_position.direction_to(get_global_mouse_position()))
 	get_tree().current_scene.add_child(node)
+	shot.emit()
+	return await node.shot
